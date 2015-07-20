@@ -1,0 +1,43 @@
+
+
+h3{
+	text-align: center;
+}
+
+.well {
+	box-shadow:9px 9px 9px rgba(0,0,0,0.2);
+	background-color: #CAB98A;
+	opacity: 1;
+
+}
+.body {
+	background-color: #DDDDDD;
+	opacity: .97;
+}
+
+body{
+	background-image: url(./../images/brain.png);
+	background-size: 80%;
+	background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; 
+  background-color: #E3D1A9;
+}
+
+.results {
+	text-align: center;
+	opacity: 1;
+}
+
+.scoreTable {
+	max-height: 65%;
+	overflow: auto;
+}
+
+.header {
+	background-color: #87240F;
+	opacity: .95;
+	border: none;
+}
+
+
