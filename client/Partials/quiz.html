@@ -1,6 +1,6 @@
 <div ng-controller = 'quizController'>
 	<h3 ng-show='!played' >How much useless stuff do you know, <span ng-bind='player'></span>?</h3>
-	<h3 ng-show='played'>Congratulations <span ng-bind='resultsPlayer'></span>! </h3>
+	<h3 ng-show='played'>Congratulations <span ng-bind='resultsPlayer'></span> </h3>
 	<div class='col-sm-10 col-sm-offset-1 well'>
 		<!-- Game -->
 		<form ng-show='!played'  name='quizForm' novalidate>
@@ -28,7 +28,5 @@
 				<p><span ng-bind='question.correctAnswer' ></span></p>
 			</div>
 		</div> <!-- end of Results Form -->
-
 	</div> <!-- end of Well -->
-	
 </div>

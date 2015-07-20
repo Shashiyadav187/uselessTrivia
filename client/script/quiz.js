@@ -12,14 +12,19 @@ uselessTrivia.controller('quizController', function($scope, $location, $rootScop
 
 	$scope.played = false;
 
+	// get questions from the server
 	socketio.emit('getQuestions');
 	socketio.on('allQuestions', function(socket, args){
 		createQuiz(socket);
 	})
 	
+	//create the quiz with 5 random questions
 	function createQuiz(questions){	
 		$scope.questions = questions;
+		$scope.quiz = [];
 		var randomQuestions = [];
+		
+		//populates the randomQuestions with 5 random non-repeated questions
 		while (randomQuestions.length < 5) {
 			var x = $scope.questions.length - Math.ceil(Math.random() * $scope.questions.length);
 			var exists = false;
@@ -28,8 +33,8 @@ uselessTrivia.controller('quizController', function($scope, $location, $rootScop
 			}
 			if(exists == false){ randomQuestions.push(x) }
 		}
-		$scope.quiz = [];
 
+		//mix up the answers for each question
 		var randAnswers = [[0, 1, 2],[1, 0, 2],[2, 0, 1],[2, 1, 0],[0, 1, 2]];
 		for(var i = 0; i<randomQuestions.length; i++){
 			$scope.quiz.push($scope.questions[randomQuestions[i]]);
@@ -52,12 +57,10 @@ uselessTrivia.controller('quizController', function($scope, $location, $rootScop
 				correct++;
 			}
 		}
-
-		var percentage = Math.floor((correct / 5) * 100);
 		
 		var results = {"name": $rootScope.player,
 								"score": correct + "/5",
-								"percentage": percentage }
+								"percentage": ((correct / 5) * 100)}
 
 		socketio.emit('gamePlayed', results);
 	} // end of play
@@ -75,14 +78,6 @@ uselessTrivia.controller('quizController', function($scope, $location, $rootScop
 		$scope.resultsPercentage = game.percentage;
 		$scope.resultsPlayer = game.player;
 		$scope.resultsScore = game.score;
-	})
+	});
 
 })
-
-
-
-
-
-
-
-

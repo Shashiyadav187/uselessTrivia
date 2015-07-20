@@ -10,7 +10,6 @@
       <div class="form-group" ng-class="{ 'has-error' : questionForm.question.$invalid && !questionForm.question.$pristine }">
         <label for="question">Question:</label>
         <input type="text" class="form-control" id="question" placeholder="Question" ng-model="newQuestion.question" name='question' required>
-   <!--      <p ng-show="questionForm.question.$invalid && !questionForm.question.$pristine" class="help-block">The question is required.</p> -->
       </div>
 
       	<!-- Answer 1 -->
@@ -19,7 +18,6 @@
         <label class='radio-inline pull-right' for="correctAnswer">  Correct Answer</label> 
         <input class='pull-right' type='radio' name="correctAnswer" ng-model='newQuestion.correctAnswer' value='0' required>
         <input type="text" class="form-control" id="answer1" placeholder="Answer 1" ng-model="newQuestion.answers[0]" required name='answer1'>  
-       <!--  <p ng-show="questionForm.answer1.$invalid && !questionForm.answer1.$pristine" class="help-block">This field is required</p> -->
       </div>
 
       	<!-- Answer 2 -->
@@ -35,7 +33,6 @@
       <div class="form-group" ng-class="{ 'has-error' : questionForm.answer3.$invalid && !questionForm.answer3.$pristine }">
         <label for="answer3">Answer 3:</label> <label class='radio-inline pull-right' for="correctAnswer">  Correct Answer</label> <input class='pull-right' type='radio' name="correctAnswer" ng-model='newQuestion.correctAnswer' value='2' required>
         <input type="text" class="form-control" id="answer3" placeholder="Answer 3" ng-model="newQuestion.answers[2]" required name='answer3'>
-         <!-- <p ng-show="questionForm.answer3.$invalid && !questionForm.answer3.$pristine" class="help-block">This field is required</p> -->
       </div>
 
       <button type="submit" class="btn btn-success" ng-disabled="questionForm.$invalid">Submit</button>
