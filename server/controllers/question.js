@@ -16,13 +16,14 @@ module.exports = (function(){
 		},
 
 		socketCreate: function(data, callback){
+			
 			var question = new Question({
 				question: data.question,
 				answers: data.answers,
 				correctAnswer: data.correctAnswer,
 				created_at: new Date
-
 			});
+
 			question.save(function(err, results){
 				if(err){
 					console.log(err);

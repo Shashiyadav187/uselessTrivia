@@ -6,7 +6,7 @@
   <div class='well col-sm-10 col-sm-offset-1'>
   	<form class="simple-form " ng-submit='addQuestion()' name='questionForm' novalidate >
 
-  		<!-- Question -->
+  		<!-- Question --> 
       <div class="form-group" ng-class="{ 'has-error' : questionForm.question.$invalid && !questionForm.question.$pristine }">
         <label for="question">Question:</label>
         <input type="text" class="form-control" id="question" placeholder="Question" ng-model="newQuestion.question" name='question' required>

@@ -3,6 +3,7 @@ var Game = mongoose.model('Game');
 
 module.exports = (function(){
 	return {
+		
 		socketShow: function(callback){
 			Game.find({}, function(err, results){
 				if (err) {
@@ -15,12 +16,14 @@ module.exports = (function(){
 		},
 
 		socketCreate: function(data, callback){
+
 			var game = new Game({
 				player: data.name,
 				score: data.score,
 				percentage: data.percentage,
 				created_at: new Date
 			});
+
 			game.save(function(err, results){
 				if(err){
 					console.log(err);
@@ -29,6 +32,6 @@ module.exports = (function(){
 				}
 			});
 		}
-		
+
 	}
 })();

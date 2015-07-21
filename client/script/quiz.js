@@ -1,11 +1,4 @@
-uselessTrivia.factory('quizFactory', function($http){
-	var factory = {};
-
-	return factory;
-})
-
-
-uselessTrivia.controller('quizController', function($scope, $location, $rootScope, quizFactory, socketio){
+uselessTrivia.controller('quizController', function($scope, $location, $rootScope, socketio){
 	if(!$rootScope.player){
 		$location.path('/');
 	}
@@ -58,9 +51,9 @@ uselessTrivia.controller('quizController', function($scope, $location, $rootScop
 			}
 		}
 		
-		var results = {"name": $rootScope.player,
-								"score": correct + "/5",
-								"percentage": ((correct / 5) * 100)}
+		var results = {	"name": $rootScope.player,
+										"score": correct + "/5",
+										"percentage": ((correct / 5) * 100) }
 
 		socketio.emit('gamePlayed', results);
 	} // end of play

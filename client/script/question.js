@@ -1,9 +1,4 @@
-uselessTrivia.factory('questionFactory', function($http){
-	var factory = {};
-	return factory;
-})
-
-uselessTrivia.controller('questionController', function($scope, $location, $rootScope, questionFactory, socketio){
+uselessTrivia.controller('questionController', function($scope, $location, $rootScope, socketio){
 	if(!$rootScope.player){
 		$location.path('/');
 	}
