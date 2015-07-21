@@ -58,19 +58,19 @@ uselessTrivia.controller('quizController', function($scope, $location, $rootScop
 		socketio.emit('gamePlayed', results);
 	} // end of play
 
-	$scope.cancel = function(){
-		$location.path('/');
-	}
-
-	$scope.playAgain = function(){
-		createQuiz($scope.questions);
-		$scope.played = false;
-	}
-
 	socketio.on('results', function(game, args){
 		$scope.resultsPercentage = game.percentage;
 		$scope.resultsPlayer = game.player;
 		$scope.resultsScore = game.score;
 	});
+
+	$scope.playAgain = function(){
+		createQuiz($scope.questions);
+		$scope.played = false;
+	}
+	
+	$scope.cancel = function(){
+		$location.path('/');
+	}
 
 })
