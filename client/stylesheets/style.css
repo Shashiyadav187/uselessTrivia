@@ -6,7 +6,9 @@ h3{
 	box-shadow:9px 9px 9px rgba(0,0,0,0.2);
 	background-color: #CAB98A;
 	opacity: 1;
-
+}
+.error{
+	text-align: center;
 }
 .body {
 	background-color: #DDDDDD;

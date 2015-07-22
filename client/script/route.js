@@ -9,7 +9,10 @@ uselessTrivia.config(function($routeProvider){
 		})
 		.when('/play', {
 			templateUrl: '/partials/quiz.html'
-		})			
+		})
+		.when('/oops', {
+			templateUrl: '/partials/err.html'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});

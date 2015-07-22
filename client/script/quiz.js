@@ -1,4 +1,5 @@
 uselessTrivia.controller('quizController', function($scope, $location, $rootScope, socketio){
+	//check to see if the player has entered name, else sends home
 	if(!$rootScope.player){
 		$location.path('/');
 	}
@@ -40,35 +41,41 @@ uselessTrivia.controller('quizController', function($scope, $location, $rootScop
 		}
 	} // end of createQuiz
 
-
+	//calculates results of the quiz and sends them to the server
 	$scope.play = function(){
 		$scope.played = true;
 		var correct = 0;
 		
+		//check each answer given to the correct answer
 		for(var i = 0; i < Object.keys($scope.answers).length; i++){
 			if ($scope.answers[i] == $scope.quiz[i].correctAnswer){
 				correct++;
 			}
 		}
 		
+		//create json object to send to the server
 		var results = {	"name": $rootScope.player,
 										"score": correct + "/5",
 										"percentage": ((correct / 5) * 100) }
 
+		//sends the results to the server
 		socketio.emit('gamePlayed', results);
 	} // end of play
 
+	//recieves results from the server
 	socketio.on('results', function(game, args){
 		$scope.resultsPercentage = game.percentage;
 		$scope.resultsPlayer = game.player;
 		$scope.resultsScore = game.score;
 	});
 
+	//reloads the quiz with new questions
 	$scope.playAgain = function(){
 		createQuiz($scope.questions);
 		$scope.played = false;
 	}
 	
+	//sends the user home if they don't want to take the quiz
 	$scope.cancel = function(){
 		$location.path('/');
 	}
